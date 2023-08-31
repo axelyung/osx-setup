@@ -2,6 +2,8 @@
 - name: OSX Setup
   hosts: 127.0.0.1
   connection: local
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
 
   vars_files:
     - default.config.yml
@@ -11,23 +13,24 @@
       include_vars: "{{ item }}"
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
-      tags: ['always']
+      tags: [always]
 
   roles:
     - role: elliotweiser.osx-command-line-tools
     - role: geerlingguy.mac.homebrew
-      tags: ['homebrew']
-    #- role: geerlingguy.dotfiles
-      #when: configure_dotfiles
-      #tags: ['dotfiles']
-    #- role: geerlingguy.mac.mas
-      #when: mas_installed_apps or mas_installed_app_ids
-      #tags: ['mas']
-    #- role: geerlingguy.mac.dock
-      #when: configure_dock
-      #tags: ['dock']
+      tags: [pkgs, homebrew]
+  #- role: geerlingguy.dotfiles
+  #when: configure_dotfiles
+  #tags: ['dotfiles']
+  #- role: geerlingguy.mac.mas
+  #when: mas_installed_apps or mas_installed_app_ids
+  #tags: ['mas']
+  #- role: geerlingguy.mac.dock
+  #when: configure_dock
+  #tags: ['dock']
 
   tasks:
-    - name: Print debug message
-      debug:
-        msg: Hello, world!
+    - import_tasks: tasks/setup.yml
+      tags: [setup]
+    - import_tasks: tasks/node.yml
+      tags: [pkgs, node]
