@@ -1,0 +1,11 @@
+---
+- name: Create Code directory
+  ansible.builtin.file:
+    path: "{{ lookup('env','HOME') }}/Code/axelyung"
+    state: directory
+    mode: "0755"
+- name: Create Screenshots directory
+  ansible.builtin.file:
+    path: "{{ lookup('env','HOME') }}/Pictures/Screenshots"
+    state: directory
+    mode: "0755"
