@@ -1,0 +1,29 @@
+---
+- name: Install nvm
+  shell: |
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+  args:
+    executable: /bin/bash
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+
+- name: Install Node LTS
+  shell: |
+    . {{ ansible_env.HOME }}/.nvm/nvm.sh
+    nvim install --lts
+  args:
+    executable: /bin/bash
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/.nvm/versions"
+
+- name: Get Node version
+  shell: node -v
+  register: node_version
+
+- name: Install pnpm
+  shell: |
+    npm install --global pnpm
+  args:
+    executable: /bin/bash
+    chdir: "{{ ansible_env.HOME }}"
+    creates: "{{ ansible_env.HOME }}/.nvm/versions/node/{{ node_version.stdout }}/bin/pnpm"
