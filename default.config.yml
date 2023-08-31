@@ -1,0 +1,94 @@
+---
+downloads: ~/.ansible-downloads/
+
+#configure_dotfiles: true
+#configure_terminal: true
+#configure_osx: true
+
+# Set to 'true' to configure the Dock via dockutil.
+#configure_dock: false
+#dockitems_remove: []
+# - Launchpad
+# - TV
+# - Podcasts
+# - 'App Store'
+#dockitems_persist: []
+# - name: "Sublime Text"
+#   path: "/Applications/Sublime Text.app/"
+#   pos: 5
+
+#configure_sudoers: false
+#sudoers_custom_config: ''
+# Example:
+# sudoers_custom_config: |
+#   # Allow users in admin group to use sudo with no password.
+#   %admin ALL=(ALL) NOPASSWD: ALL
+
+#gh_username: axelyung
+#dotfiles_repo: https://github.com/axelyung/dotfiles.git
+#dotfiles_repo_accept_hostkey: true
+#dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
+#dotfiles_files:
+  #- .zshrc
+  #- .gitignore
+  #- .inputrc
+  #- .osx
+  #- .vimrc
+
+homebrew_installed_packages:
+  - ansible
+  - bat
+  - curl
+  - exa
+  - fd
+  - fontconfig
+  - fzf
+  - gh
+  - git
+  - git-lfs
+  - gpg
+  - highway
+  - just
+  - kubernetes-cli
+  - lazydocker
+  - lazygit
+  - minikube
+  - neovim
+  - python@3.11
+  - ranger
+  - ripgrep
+  - starship
+  - tmux
+  - tree
+  - wget
+  - wrk
+  - zoxide
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+  - homebrew/cask-fonts
+  - github/gh
+
+homebrew_cask_apps:
+  - alfred
+  - authy
+  - alacritty
+  - chromedriver
+  - docker
+  - firefox
+  - font-fira-code-nerd-font
+  - google-chrome
+  - microsoft-edge
+  - slack
+  - notion
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+#mas_installed_apps: []
+#mas_email: ""
+#mas_password: ""
+
+#osx_script: "~/.osx --no-restart"
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
