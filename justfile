@@ -4,5 +4,5 @@ lint:
 install:
 	ansible-galaxy install -r requirements.yml
 
-run:
+all:
 	ansible-playbook main.yml --ask-become-pass
