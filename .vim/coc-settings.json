@@ -1,5 +1,0 @@
-{
-  "yaml.schemas": {
-    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#%2F%24defs%2Fplaybook": "file:///Users/axelyung/Code/axelyung/osx-setup/playbook.yml"
-  }
-}
