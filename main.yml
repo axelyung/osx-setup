@@ -19,12 +19,12 @@
       default: axelyung
       private: false
     - name: ssh_key_passphrase
-      prompt: SSH key passphrase?
+      prompt: SSH key passphrase? (leave blank to skip)
       private: true
 
   pre_tasks:
     - name: Include playbook configuration.
-      include_vars: "{{ item }}"
+      ansible.builtin.include_vars: "{{ item }}"
       with_fileglob:
         - "{{ playbook_dir }}/config.yml"
       tags: [always]
@@ -34,26 +34,41 @@
       tags: [pkgs, xcode]
     - role: geerlingguy.mac.homebrew
       tags: [pkgs, homebrew]
-  #- role: geerlingguy.mac.mas
-  #when: mas_installed_apps or mas_installed_app_ids
-  #tags: ['mas']
-  #- role: geerlingguy.mac.dock
-  #when: configure_dock
-  #tags: ['dock']
+  # - role: geerlingguy.mac.mas
+  # when: mas_installed_apps or mas_installed_app_ids
+  # tags: ['mas']
+  # - role: geerlingguy.mac.dock
+  # when: configure_dock
+  # tags: ['dock']
 
   tasks:
-    - import_tasks: tasks/setup.yml
+    - name: Setup
+      ansible.builtin.import_tasks: tasks/setup.yml
       tags: [setup]
-    - name: terminfo setup
+    - name: Copy custom sudoers configuration
+      tags: [sudoers]
+      copy:
+        src: "{{ playbook_dir }}/files/sudoers/custom"
+        dest: /private/etc/sudoers.d/custom
+        mode: 0440
+        validate: visudo -cf %s
+      become: yes
+    #- name: Sudoers
+      #ansible.builtin.import_tasks: tasks/sudoers.yml
+      #tags: [sudoers]
+    - name: Terminfo
       with_items: "{{ query('fileglob', 'terminfo/*') }}"
-      include_tasks:
+      ansible.builtin.include_tasks:
         file: tasks/terminfo.yml
         apply:
           tags: [terminfo]
       tags: [terminfo]
-    - import_tasks: tasks/crypto.yml
+    - name: Crypto
+      ansible.builtin.import_tasks: tasks/crypto.yml
       tags: [crypto]
-    - import_tasks: tasks/node.yml
+    - name: Node
+      ansible.builtin.import_tasks: tasks/node.yml
       tags: [pkgs, node]
-    - import_tasks: tasks/dotfiles.yml
+    - name: Dotfiles
+      ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: [dotfiles]

@@ -1,5 +1,5 @@
 lint:
-	ansible-lint --write
+	ansible-lint --write .
 
 install:
 	ansible-galaxy install -r requirements.yml
