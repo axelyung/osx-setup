@@ -5,8 +5,6 @@
   become: true
   become_user: "{{ lookup('env', 'USER') }}"
   gather_facts: true
-  vars_files:
-    - default.config.yml
   vars_prompt:
     - name: email
       prompt: What's your email?
@@ -30,13 +28,6 @@
       tags: [pkgs, xcode]
     - role: geerlingguy.mac.homebrew
       tags: [pkgs, homebrew]
-  # - role: geerlingguy.mac.mas
-  # when: mas_installed_apps or mas_installed_app_ids
-  # tags: ['mas']
-  # - role: geerlingguy.mac.dock
-  # when: configure_dock
-  # tags: ['dock']
-
   tasks:
     - name: Setup
       ansible.builtin.import_tasks: tasks/setup.yml
