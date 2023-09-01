@@ -1,4 +1,3 @@
----
 - name: Create Code directory
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/Code/axelyung"

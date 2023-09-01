@@ -1,7 +1,5 @@
----
 roles:
   - name: elliotweiser.osx-command-line-tools
-
 collections:
   - name: community.crypto
   - name: geerlingguy.mac

@@ -1,4 +1,3 @@
----
 - name: Add terminfo entry
   ansible.builtin.command: tic -x {{ item }}
   register: terminfo

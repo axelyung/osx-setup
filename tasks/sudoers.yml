@@ -1,11 +1,8 @@
----
 - name: Copy custom sudoers configuration
   become: yes
   copy:
     src: "{{ playbook_dir }}/files/sudoers/custom"
-    dest: /etc/sudoers.d/custom
+    dest: /private/etc/sudoers.d/custom
     mode: 0440
-    validate: visudo -cf %s
+    validate: visudo -scf %s
     backup: yes
-    owner: root
-    group: root

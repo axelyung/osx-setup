@@ -1,20 +1,16 @@
----
 - name: Download nvm installer
   ansible.builtin.get_url:
     url: https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh
     dest: /tmp/install-nvm.sh
     mode: u+rwx
-
 - name: Execute the nvm installer
   ansible.builtin.command: bash /tmp/install-nvm.sh
   args:
     creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-
 - name: Remove the nvm installer
   ansible.builtin.file:
     path: /tmp/install-nvm.sh
     state: absent
-
 - name: Install Node LTS
   ansible.builtin.shell: |
     . {{ ansible_env.HOME }}/.nvm/nvm.sh
@@ -23,12 +19,10 @@
     executable: /bin/bash
     chdir: "{{ ansible_env.HOME }}"
     creates: "{{ ansible_env.HOME }}/.nvm/versions"
-
 - name: Get Node version
   ansible.builtin.command: node -v
   register: version
   changed_when: version.rc != 0
-
 - name: Install pnpm
   ansible.builtin.command: npm install --global pnpm
   args:
