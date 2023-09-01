@@ -1,0 +1,12 @@
+---
+- name: chezmoi init
+  shell: |
+    chezmoi init https://github.com/{{ gh_username }}/dotfiles.git
+  args:
+    executable: /bin/bash
+    creates: "{{ ansible_env.HOME }}/.local/share/chezmoi"
+- name: chezmoi apply
+  shell: |
+    chezmoi apply --force
+  args:
+    executable: /bin/bash
