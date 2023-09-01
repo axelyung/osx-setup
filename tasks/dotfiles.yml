@@ -1,12 +1,15 @@
 ---
-- name: chezmoi init
-  shell: |
-    chezmoi init https://github.com/{{ gh_username }}/dotfiles.git
+- name: Initialize dotfiles
+  ansible.builtin.command: chezmoi init https://github.com/{{ gh_username }}/dotfiles.git
   args:
-    executable: /bin/bash
     creates: "{{ ansible_env.HOME }}/.local/share/chezmoi"
-- name: chezmoi apply
-  shell: |
-    chezmoi apply --force
-  args:
-    executable: /bin/bash
+- name: Verify dotfiles
+  ansible.builtin.command: chezmoi verify
+  register: verify
+  changed_when: verify.rc == 1
+  failed_when: false
+- name: Apply dotfiles
+  ansible.builtin.command: chezmoi apply --force
+  when: verify.rc == 1
+  register: apply
+  changed_when: apply.rc != 0
