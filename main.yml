@@ -4,9 +4,23 @@
   connection: local
   become: true
   become_user: "{{ lookup('env', 'USER') }}"
+  gather_facts: true
 
   vars_files:
     - default.config.yml
+
+  vars_prompt:
+    - name: email
+      prompt: What's your email?
+      default: axelyung@gmail.com
+      private: false
+    - name: gh_username
+      prompt: What's your GitHub username?
+      default: axelyung
+      private: false
+    - name: ssh_key_passphrase
+      prompt: SSH key passphrase?
+      private: true
 
   pre_tasks:
     - name: Include playbook configuration.
@@ -17,11 +31,9 @@
 
   roles:
     - role: elliotweiser.osx-command-line-tools
+      tags: [pkgs, xcode]
     - role: geerlingguy.mac.homebrew
       tags: [pkgs, homebrew]
-  #- role: geerlingguy.dotfiles
-  #when: configure_dotfiles
-  #tags: ['dotfiles']
   #- role: geerlingguy.mac.mas
   #when: mas_installed_apps or mas_installed_app_ids
   #tags: ['mas']
@@ -32,5 +44,16 @@
   tasks:
     - import_tasks: tasks/setup.yml
       tags: [setup]
+    - name: terminfo setup
+      with_items: "{{ query('fileglob', 'terminfo/*') }}"
+      include_tasks:
+        file: tasks/terminfo.yml
+        apply:
+          tags: [terminfo]
+      tags: [terminfo]
+    - import_tasks: tasks/crypto.yml
+      tags: [crypto]
     - import_tasks: tasks/node.yml
       tags: [pkgs, node]
+    - import_tasks: tasks/dotfiles.yml
+      tags: [dotfiles]

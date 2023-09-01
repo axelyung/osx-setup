@@ -1,6 +1,9 @@
 ---
 downloads: ~/.ansible-downloads/
 
+terminfo:
+  - https://gist.githubusercontent.com/nicm/ea9cf3c93f22e0246ec858122d9abea1/raw/37ae29fc86e88b48dbc8a674478ad3e7a009f357/tmux-256color
+
 #configure_dotfiles: true
 #configure_terminal: true
 #configure_osx: true
@@ -29,11 +32,11 @@ downloads: ~/.ansible-downloads/
 #dotfiles_repo_accept_hostkey: true
 #dotfiles_repo_local_destination: ~/Development/GitHub/dotfiles
 #dotfiles_files:
-  #- .zshrc
-  #- .gitignore
-  #- .inputrc
-  #- .osx
-  #- .vimrc
+#- .zshrc
+#- .gitignore
+#- .inputrc
+#- .osx
+#- .vimrc
 
 homebrew_installed_packages:
   - ansible
@@ -63,6 +66,10 @@ homebrew_installed_packages:
   - wget
   - wrk
   - zoxide
+  - taskwarrior-tui
+  - chezmoi
+  - findutils
+  - k9s
 
 homebrew_taps:
   - homebrew/core
