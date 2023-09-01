@@ -21,7 +21,6 @@ homebrew_installed_packages:
   - just
   - k9s
   - kubernetes-cli
-  - yamlfmt
   - lazydocker
   - lazygit
   - minikube
@@ -35,6 +34,7 @@ homebrew_installed_packages:
   - tree
   - wget
   - wrk
+  - yamlfmt
   - zoxide
 homebrew_cask_apps:
   - alacritty
@@ -48,3 +48,4 @@ homebrew_cask_apps:
   - microsoft-edge
   - notion
   - slack
+homebrew_upgrade_all_packages: true

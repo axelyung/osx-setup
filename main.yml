@@ -32,9 +32,10 @@
     - name: Setup
       ansible.builtin.import_tasks: tasks/setup.yml
       tags: [setup]
-    - name: Sudoers
-      ansible.builtin.import_tasks: tasks/sudoers.yml
-      tags: [sudoers]
+      # not working
+    #- name: Sudoers
+      #ansible.builtin.import_tasks: tasks/sudoers.yml
+      #tags: [sudoers]
     - name: Terminfo
       ansible.builtin.import_tasks: tasks/terminfo.yml
       tags: [terminfo]

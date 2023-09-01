@@ -2,7 +2,7 @@ lint:
 	ansible-lint --write .
 
 install:
-	ansible-galaxy install -r requirements.yml
+	ansible-galaxy install -r requirements.yml --force
 
 all:
-	ansible-playbook main.yml --ask-become-pass
+	ansible-playbook --ask-become-pass main.yml
