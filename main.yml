@@ -20,10 +20,10 @@
       prompt: SSH key passphrase? (leave blank to skip)
       private: true
   pre_tasks:
-    - name: Include playbook configuration.
+    - name: Include vars
       ansible.builtin.include_vars: "{{ item }}"
       with_fileglob:
-        - "{{ playbook_dir }}/config.yml"
+        - "{{ playbook_dir }}/vars/*.yml"
       tags: [always]
   roles:
     - role: elliotweiser.osx-command-line-tools
@@ -45,11 +45,7 @@
       ansible.builtin.import_tasks: tasks/sudoers.yml
       tags: [sudoers]
     - name: Terminfo
-      with_items: "{{ query('fileglob', 'terminfo/*') }}"
-      ansible.builtin.include_tasks:
-        file: tasks/terminfo.yml
-        apply:
-          tags: [terminfo]
+      ansible.builtin.import_tasks: tasks/terminfo.yml
       tags: [terminfo]
     - name: Crypto
       ansible.builtin.import_tasks: tasks/crypto.yml

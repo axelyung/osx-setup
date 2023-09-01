@@ -1,5 +1,6 @@
 ---
 - name: Add terminfo entry
   ansible.builtin.command: tic -x {{ item }}
+  loop: "{{ query('fileglob', 'files/terminfo/*') }}"
   register: terminfo
   changed_when: terminfo.rc != 0
