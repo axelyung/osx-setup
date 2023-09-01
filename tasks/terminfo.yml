@@ -1,0 +1,6 @@
+---
+- name: Add terminfo entry
+  shell: |
+    tic -x {{ item }}
+  args:
+    executable: /bin/bash
