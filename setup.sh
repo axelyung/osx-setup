@@ -45,3 +45,5 @@ else
 	brew install ansible
 fi
 
+# run Ansible playbook
+ansible-playbook --ask-become-pass main.yml
