@@ -1,8 +1,9 @@
+---
 - name: Copy custom sudoers configuration
-  become: yes
-  copy:
+  become: true
+  ansible.builtin.copy:
     src: "{{ playbook_dir }}/files/sudoers/custom"
     dest: /private/etc/sudoers.d/custom
-    mode: 0440
+    mode: "0440"
     validate: visudo -scf %s
-    backup: yes
+    backup: true

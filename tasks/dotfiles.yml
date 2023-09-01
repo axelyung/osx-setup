@@ -1,3 +1,4 @@
+---
 - name: Initialize dotfiles
   ansible.builtin.command: chezmoi init https://github.com/{{ gh_username }}/dotfiles.git
   args:
