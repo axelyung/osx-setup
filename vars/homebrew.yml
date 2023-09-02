@@ -5,9 +5,13 @@ homebrew_taps:
   - github/gh
 homebrew_installed_packages:
   - ansible
+  - aria2
   - bat
   - chezmoi
   - curl
+  - dashlane-cli
+  - duf
+  - duti
   - exa
   - fd
   - findutils
@@ -18,11 +22,14 @@ homebrew_installed_packages:
   - git-lfs
   - gpg
   - highway
+  - jq
   - just
   - k9s
   - kubernetes-cli
   - lazydocker
   - lazygit
+  - mas
+  - mas
   - minikube
   - neovim
   - python@3.11
@@ -30,11 +37,13 @@ homebrew_installed_packages:
   - ripgrep
   - starship
   - taskwarrior-tui
+  - tldr
   - tmux
   - tree
   - wget
   - wrk
   - yamlfmt
+  - yq
   - zoxide
 homebrew_cask_apps:
   - alacritty
@@ -47,5 +56,6 @@ homebrew_cask_apps:
   - google-chrome
   - microsoft-edge
   - notion
+  - pdf-expert
   - slack
 homebrew_upgrade_all_packages: true

@@ -1,0 +1,5 @@
+---
+mas_install:
+  - 497799835 # Xcode
+mas_uninstall:
+  - 409201541 # Pages

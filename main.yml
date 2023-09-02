@@ -48,3 +48,6 @@
     - name: Dotfiles
       ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: [dotfiles]
+    - name: AppStore
+      ansible.builtin.import_tasks: tasks/apps.yml
+      tags: [pkgs, apps]
