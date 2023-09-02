@@ -2,8 +2,6 @@
 - name: OSX Setup
   hosts: 127.0.0.1
   connection: local
-  become: true
-  become_user: "{{ lookup('env', 'USER') }}"
   gather_facts: true
   vars_prompt:
     - name: email
@@ -32,10 +30,9 @@
     - name: Setup
       ansible.builtin.import_tasks: tasks/setup.yml
       tags: [setup]
-      # not working
-    #- name: Sudoers
-      #ansible.builtin.import_tasks: tasks/sudoers.yml
-      #tags: [sudoers]
+    - name: Sudoers
+      ansible.builtin.import_tasks: tasks/sudoers.yml
+      tags: [sudoers]
     - name: Terminfo
       ansible.builtin.import_tasks: tasks/terminfo.yml
       tags: [terminfo]
@@ -49,5 +46,5 @@
       ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: [dotfiles]
     - name: AppStore
-      ansible.builtin.import_tasks: tasks/apps.yml
-      tags: [pkgs, apps]
+      ansible.builtin.import_tasks: tasks/mas.yml
+      tags: [pkgs, mas]
