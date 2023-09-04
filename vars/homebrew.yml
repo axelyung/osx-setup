@@ -6,8 +6,10 @@ homebrew_taps:
 homebrew_installed_packages:
   - ansible
   - aria2
+  - asdf
   - bat
   - chezmoi
+  - coreutils
   - curl
   - dashlane-cli
   - duf
@@ -28,6 +30,7 @@ homebrew_installed_packages:
   - kubernetes-cli
   - lazydocker
   - lazygit
+  - m-cli
   - mas
   - mas
   - minikube
