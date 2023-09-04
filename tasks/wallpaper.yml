@@ -1,0 +1,5 @@
+---
+- name: Set wallpaper
+  ansible.builtin.command: m wallpaper "{{ playbook_dir }}/files/wallpaper/nord.jpg"
+  register: wallpaper
+  changed_when: wallpaper.rc != 0

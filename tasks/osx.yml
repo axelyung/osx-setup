@@ -1,0 +1,21 @@
+---
+- name: ApplePressAndHoldEnabled
+  community.general.osx_defaults:
+    key: InitialKeyRepeApplePressAndHoldEnabled
+    type: bool
+    value: false
+- name: InitialKeyRepeat
+  community.general.osx_defaults:
+    key: InitialKeyRepeat
+    type: float
+    value: 10
+- name: KeyRepeat
+  community.general.osx_defaults:
+    key: KeyRepeat
+    type: float
+    value: 1
+- name: Mouse Speed
+  community.general.osx_defaults:
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 3

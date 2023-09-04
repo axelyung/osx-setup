@@ -30,6 +30,9 @@
     - name: Setup
       ansible.builtin.import_tasks: tasks/setup.yml
       tags: [setup]
+    - name: OSX
+      ansible.builtin.import_tasks: tasks/osx.yml
+      tags: [osx]
     - name: Sudoers
       ansible.builtin.import_tasks: tasks/sudoers.yml
       tags: [sudoers]
@@ -48,3 +51,6 @@
     - name: AppStore
       ansible.builtin.import_tasks: tasks/mas.yml
       tags: [pkgs, mas]
+    - name: Wallpaper
+      ansible.builtin.import_tasks: tasks/wallpaper.yml
+      tags: [wallpaper]
