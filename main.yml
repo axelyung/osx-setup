@@ -54,3 +54,6 @@
     - name: Wallpaper
       ansible.builtin.import_tasks: tasks/wallpaper.yml
       tags: [wallpaper]
+    - name: Asdf
+      ansible.builtin.import_tasks: tasks/asdf.yml
+      tags: [pkgs, asdf]
