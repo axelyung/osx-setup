@@ -19,3 +19,15 @@
     key: com.apple.trackpad.scaling
     type: float
     value: 3
+- name: Autohide Dock
+  community.general.osx_defaults:
+    domain: com.apple.Dock
+    key: autohide
+    type: bool
+    value: true
+- name: Disable Desktop Rearrangement
+  community.general.osx_defaults:
+    domain: com.apple.Dock
+    key: mru-spaces
+    type: bool
+    value: false
