@@ -31,3 +31,8 @@
     key: mru-spaces
     type: bool
     value: false
+- name: ShowAllExtensions
+  community.general.osx_defaults:
+    key: AppleShowAllExtensions
+    type: bool
+    value: true

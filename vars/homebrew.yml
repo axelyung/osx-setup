@@ -36,7 +36,6 @@ homebrew_installed_packages:
   - mas
   - minikube
   - neovim
-  - python@3.11
   - ranger
   - ripgrep
   - starship
