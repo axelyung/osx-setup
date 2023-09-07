@@ -1,6 +1,11 @@
 ---
-- name: ASDF
+- name: Clone asdf-vm repo
   ansible.builtin.git:
     repo: https://github.com/asdf-vm/asdf.git
     dest: "{{ ansible_env.HOME }}/.asdf"
-    version: v0.12.0
+    version: {{ asdf_version }}
+- name: Install asdf plugins
+  ansible.builtin.command: asdf plugin add {{ item }}
+  args:
+      creates: "{{ ansible_env.HOME }}/.asdf/plugins/{{ item }}"
+  loop: "{{ asdf_plugins }}"

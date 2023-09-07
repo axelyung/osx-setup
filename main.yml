@@ -37,12 +37,12 @@
     - name: AppStore
       ansible.builtin.import_tasks: tasks/mas.yml
       tags: [pkgs, mas]
+    - name: Asdf
+      ansible.builtin.import_tasks: tasks/asdf.yml
+      tags: [pkgs, asdf]
     - name: Dotfiles
       ansible.builtin.import_tasks: tasks/dotfiles.yml
       tags: [dotfiles]
     - name: Wallpaper
       ansible.builtin.import_tasks: tasks/wallpaper.yml
       tags: [wallpaper]
-    - name: Asdf
-      ansible.builtin.import_tasks: tasks/asdf.yml
-      tags: [pkgs, asdf]

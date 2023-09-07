@@ -1,0 +1,9 @@
+---
+asdf_version: v0.12.0
+asdf_plugins:
+  - name: golang
+  - name: gradle
+  - name: java
+  - name: nodejs
+  - name: python
+  - name: rust
