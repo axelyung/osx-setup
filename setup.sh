@@ -20,6 +20,7 @@ blue() {
 # Prompt
 # ====================
 
+echo
 echo "This guided installer is meant to quickly setup a new OSX environment. 💻"
 echo
 echo "We'll be installing a number of SDKs as well as recommended desktop productivity apps."

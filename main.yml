@@ -42,15 +42,12 @@
     - name: Crypto
       ansible.builtin.import_tasks: tasks/crypto.yml
       tags: [crypto]
-    - name: Node
-      ansible.builtin.import_tasks: tasks/node.yml
-      tags: [pkgs, node]
-    - name: Dotfiles
-      ansible.builtin.import_tasks: tasks/dotfiles.yml
-      tags: [dotfiles]
     - name: AppStore
       ansible.builtin.import_tasks: tasks/mas.yml
       tags: [pkgs, mas]
+    - name: Dotfiles
+      ansible.builtin.import_tasks: tasks/dotfiles.yml
+      tags: [dotfiles]
     - name: Wallpaper
       ansible.builtin.import_tasks: tasks/wallpaper.yml
       tags: [wallpaper]
