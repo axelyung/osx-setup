@@ -47,7 +47,7 @@ green "Xcode command line tools installed 🛠️"
 # Homebrew
 # ====================
 
-brew_prefix=$([ $(arch) == "arm64" ] && echo "/opt/homebrew" || echo "/usr/local")
+brew_prefix=$([[ "$(arch)" == "arm64" ]] && echo "/opt/homebrew" || echo "/usr/local")
 
 if [ ! -e "$brew_prefix/bin/brew" ]; then
 	blue "Installing Homebrew..."
