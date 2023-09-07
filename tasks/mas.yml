@@ -8,3 +8,8 @@
   community.general.mas:
     state: absent
     id: "{{ mas_uninstall }}"
+- name: Accept Xcode license
+  ansible.builtin.command: xcodebuild -license accept
+  become: true
+  register: accept
+  changed_when: accept.rc != 0
