@@ -3,6 +3,7 @@ homebrew_taps:
   - homebrew/cask
   - homebrew/cask-fonts
   - github/gh
+  - dashlane/tap
 homebrew_installed_packages:
   - ansible
   - aria2
