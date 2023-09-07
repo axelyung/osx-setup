@@ -9,7 +9,9 @@
   changed_when: verify.rc == 1
   failed_when: false
 - name: Apply dotfiles
-  ansible.builtin.command: chezmoi apply --force
+  ansible.builtin.shell: |
+    chezmoi state delete-bucket --bucket=scriptState
+    chezmoi apply --force --progress=true --refresh-externals
   when: verify.rc == 1
   register: apply
   changed_when: apply.rc != 0
