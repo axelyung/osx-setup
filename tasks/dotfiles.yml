@@ -1,6 +1,6 @@
 ---
 - name: Initialize dotfiles
-  ansible.builtin.command: chezmoi init https://github.com/{{ gh_username }}/dotfiles.git
+  ansible.builtin.command: chezmoi init {{ dotfiles_repo }}
   args:
     creates: "{{ ansible_env.HOME }}/.local/share/chezmoi"
 - name: Verify dotfiles

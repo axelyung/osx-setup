@@ -4,10 +4,6 @@
   connection: local
   gather_facts: true
   vars_prompt:
-    - name: email
-      prompt: What's your email?
-      default: axelyung@gmail.com
-      private: false
     - name: ssh_key_passphrase
       prompt: SSH key passphrase? (leave blank to skip)
       private: true

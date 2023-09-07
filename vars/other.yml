@@ -1,2 +1,4 @@
 ---
 downloads: ~/.ansible-downloads/
+email: axelyung@gmail.com
+dotfiles_repo: git@github.com:axelyung/dotfiles.git
