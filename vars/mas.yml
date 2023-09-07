@@ -2,4 +2,8 @@
 mas_install:
   - 497799835 # Xcode
 mas_uninstall:
+  - 408981434 # iMovie
+  - 409183694 # Keynote
   - 409201541 # Pages
+  - 409203825 # Numbers
+  - 682658836 # GarageBand
