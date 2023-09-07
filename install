@@ -79,3 +79,12 @@ green "Ansible dependencies installed 📚"
 
 blue "Ansible will now ask you for a \"BECOME\" password. Please enter your system password. 🔒"
 ansible-playbook --ask-become-pass main.yml
+
+# ====================
+# End
+# ====================
+
+echo
+green "Please restart your terminal to ensure all changes take effect. 🔄"
+read "?Press any key to continue..."
+echo
