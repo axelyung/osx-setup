@@ -34,7 +34,6 @@ homebrew_installed_packages:
   - lazygit
   - m-cli
   - mas
-  - mas
   - minikube
   - neovim
   - ranger

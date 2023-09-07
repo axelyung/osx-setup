@@ -1,49 +1,78 @@
 #!/bin/zsh
 
-set -eu
+set -e
 
-check() {
-	eval $1 >/dev/null 2>&1 && echo 0 || echo 1
+end="\033[0m"
+green="\033[0;32m"
+blue="\033[0;34m"
+
+green() {
+  echo -e "${green}${1}${end}"
+  echo
 }
 
-# install xcode
-if [[ $(check "xcode-select -p") ]]
-then
-	echo "Xcode command line tools already installed"
-else
-	echo "Installing Xcode command line tools"
-	xcode-select --install
+blue() {
+  echo -e "${blue}${1}${end}"
+  echo
+}
+
+# ====================
+# Prompt
+# ====================
+
+echo "This guided installer is meant to quickly setup a new OSX environment. 💻"
+echo
+echo "We'll be installing a number of SDKs as well as recommended desktop productivity apps."
+echo
+read "?Press any key to continue..."
+echo
+
+# ====================
+# Xcode
+# ====================
+if ! xcode-select --print-path &> /dev/null; then
+	blue "Please follow the native prompt to install the command line developer tools..."
+	xcode-select --install &> /dev/null
 fi
 
-# install Homebrew
-if [[ $(check "which brew") ]]
-then
-	echo "Homebrew already installed"
-else
-	echo "Installing Homebrew..."
+# wait until installation has finished.
+until $(xcode-select --print-path &> /dev/null); do
+  sleep 1;
+done
+
+green "Xcode command line tools installed 🛠️"
+
+# ====================
+# Homebrew
+# ====================
+
+if [ ! -d "/opt/homebrew" ]; then
+	blue "Installing Homebrew..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew update
-brew upgrade
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> $HOME/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# install Python
-if [[ $(check "which python3") ]]
-then
-	echo "Python already installed"
-else
-	echo "Installing Python..."
-	brew install python@3.11
+green "Homebrew installed 🍺"
+
+
+# ====================
+# Ansible
+# ====================
+
+# add python to PATH
+PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
+if ! which ansible &> /dev/null; then
+	blue "Installing Ansible..."
+	pip3 install --force-reinstall ansible
 fi
 
-# install Ansible
-if [[ $(check "which ansible") ]]
-then
-	echo "Ansible already installed"
-else
-	echo "Installing Ansible..."
-	brew install ansible
-fi
+green "Ansible installed 🤖"
 
-# run Ansible playbook
+ansible-galaxy install -r requirements.yml
+green "Ansible dependencies installed 📚"
+
+blue "Ansible will now ask you for a \"BECOME\" password. Please enter your system password. 🔒"
 ansible-playbook --ask-become-pass main.yml
