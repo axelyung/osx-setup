@@ -5,7 +5,9 @@
     dest: "{{ ansible_env.HOME }}/.asdf"
     version: "{{ asdf_version }}"
 - name: Install asdf plugins
-  ansible.builtin.command: asdf plugin add {{ item }}
+  ansible.builtin.shell: |
+    . "$HOME/.asdf/asdf.sh"
+    asdf plugin add {{ item }}
   args:
       creates: "{{ ansible_env.HOME }}/.asdf/plugins/{{ item }}"
   loop: "{{ asdf_plugins }}"
