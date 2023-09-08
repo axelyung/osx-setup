@@ -36,3 +36,9 @@
     key: AppleShowAllExtensions
     type: bool
     value: true
+- name: ShowAllFiles
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: string
+    value: TRUE
