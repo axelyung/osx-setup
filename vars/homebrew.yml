@@ -5,10 +5,11 @@ homebrew_taps:
   - github/gh
   - dashlane/tap
 homebrew_installed_packages:
-  - ansible
   - aria2
   - asdf
+  - awscli
   - bat
+  - bison
   - chezmoi
   - coreutils
   - curl
@@ -24,7 +25,9 @@ homebrew_installed_packages:
   - gh
   - git
   - git-lfs
+  - gmp
   - gpg
+  - gtop
   - highway
   - htop
   - jdtls
@@ -63,4 +66,5 @@ homebrew_cask_apps:
   - notion
   - pdf-expert
   - slack
+  - stats
 homebrew_upgrade_all_packages: true
