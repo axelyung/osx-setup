@@ -58,6 +58,7 @@ homebrew_cask_apps:
   - alfred
   - authy
   - chromedriver
+  - discord
   - docker
   - firefox
   - font-fira-code-nerd-font
